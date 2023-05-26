@@ -22,10 +22,30 @@ function createTodo() {
     individualTaskDiv.appendChild(newTask)
     individualTaskDiv.appendChild(deleteButton)
     taskInput.value = ''
+  
+  // Save the todo list to local storage
+  localStorage.setItem('todoList', taskContainer.innerHTML);
   }
+}
+
+if (localStorage.getItem('todoList')) {
+  taskContainer.innerHTML = localStorage.getItem('todoList');
 }
 
 addBtn.addEventListener('click', (e) => {
   e.preventDefault()
+  const todoList = localStorage.getItem('todoList');
   createTodo()
 })
+
+taskContainer.addEventListener('click', (e) => {
+  // Check if the event target is the delete button
+  if (e.target.id === 'delete') {
+    // Get the parent div element and remove it from the DOM
+    const taskDiv = e.target.parentElement;
+    taskDiv.remove();
+     // Save the updated todo list to local storage
+    localStorage.setItem('todoList', taskContainer.innerHTML);
+  
+  }
+});
