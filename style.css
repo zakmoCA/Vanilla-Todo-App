@@ -1,5 +1,14 @@
 .individual {
   display: flex; 
-  width: 60%;
   margin-top: 10px;
+  width: fit-content;
+  justify-content: space-between;
+}
+
+#task {
+  width: 90%;
+}
+
+#delete {
+  margin-left: 15px;
 }
